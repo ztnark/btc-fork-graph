@@ -1,0 +1,36 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+</head>
+<body>
+	<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+$.ajax({
+    url: '/entries',
+    method: 'GET',
+    success: function(response){
+        var ratios = [];
+        var dates = [];
+        _.each(response["BCH"],function(bch,index){
+	    ratios.push(bch["profit_index"] / response["BTC"][index]["profit_index"]);
+	    dates.push(bch["created_at"]);
+	});
+        debugger;
+    	drawChart(ratios,dates);
+    }
+})
+
+var drawChart = function(data, labels){
+var ctx = document.getElementById("myChart").getContext('2d');
+var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data:{labels: labels, datasets: [{data: data, label: "My First dataset"}]},
+    options: {}
+});
+}
+
+</script>
+</body>
+</html>

@@ -5,12 +5,6 @@ $.ajax({
         var bchRatios = [];
         var btcRatios = [];
         var dates = [];
-	var bchs = _.filter(response["BCH"]["history"]["all"],function(entry){
-	    return entry["timestamp"] > 1501731000;
-	});
-        var btcs = _.filter(response["BTC"]["history"]["all"],function(entry){
-            return entry["timestamp"] > 1501731000;
-        });
         _.each(response["BCH"]["history"]["all"],function(bch,index){
             bchRatios.push((bch["dari"] / response["BTC"]["history"]["all"][index]["dari"])*100);
             var time = moment(bch["timestamp"]*1000);
@@ -49,7 +43,7 @@ var myLineChart = new Chart(ctx, {
                                 min: 0,
                                 steps: 10,
                                 stepValue: 5,
-                                max: 500
+                                max: 400
                         }
                 }]
             }

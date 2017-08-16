@@ -13,7 +13,7 @@ $.ajax({
         _.each(response["BTC"],function(btc,index){
             btcRatios.push((btc["profit_index"] / response["BCH"][index]["profit_index"])*100);
         });
-        var dataSets = [{data: bchRatios, backgroundColor:'rgb(255, 99, 132)', borderColor:'rgb(255, 99, 132)',fill: false, label: "BCH"}, {data: btcRatios, borderColor:'rgb(54, 162, 235)', backgroundColor:'rgb(54, 162, 235)', fill: false, label: "BTC"}];
+        var dataSets = [{data: bchRatios, backgroundColor:'rgb(255, 99, 132)', borderColor:'rgb(255, 99, 132)',fill: false, label: "BCH/BTC"}, {data: btcRatios, borderColor:'rgb(54, 162, 235)', backgroundColor:'rgb(54, 162, 235)', fill: false, label: "BTC/BCH"}];
         drawChart(dataSets,dates);
     }
 })

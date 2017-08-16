@@ -22,7 +22,7 @@ var cronJob = cron.job("*/5 * * * *", function(){
 	btc.name = "BTC";
 	btc.save();    	
     });
-}); 
+});
 
 app.get('/entries', function(request, response){
   //return all the entries
